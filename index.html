@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Bagyshla meni aýymmm 🙏🏻</title>
-
 <style>
     body {
         margin: 0;
@@ -18,12 +17,14 @@
         overflow: hidden;
         position: relative;
     }
+    
     h1 {
         color: #5a0000;
         font-size: 28px;
         text-align: center;
         margin-bottom: 40px;
     }
+
     .btn {
         padding: 12px 28px;
         border-radius: 12px;
@@ -32,15 +33,18 @@
         cursor: pointer;
         margin: 10px;
     }
+
     #yes {
         background: #ff4b4b;
         color: white;
     }
+
     #no {
         background: white;
         color: #333;
-        position: absolute;
+        position: relative;
     }
+
     #message {
         display: none;
         font-size: 22px;
@@ -49,7 +53,6 @@
         width: 80%;
     }
 
-    /* Falling hearts */
     .heart {
         position: absolute;
         color: #ff4b4b;
@@ -68,44 +71,40 @@
 
 <body>
 
-<h1>Bagyshla meni aýymmm 🙏🏻🥺❤️</h1>
+<h1>Bagyshla meni aýymmm 🙏🏻</h1>
 
-<div>
-    <button id="yes" class="btn">Bolya ❤️‍🔥</button>
-    <button id="no" class="btn">Yok 😁</button>
-</div>
+<button class="btn" id="yes">Bolýa ❤️‍🔥</button>
+<button class="btn" id="no">Yoooo 😁</button>
 
-<p id="message">Aýym, seni çooook söýýän 🥺❤️‍🔥 Şuw wagt bagyşladygyň üçin minnetdar! 🫂</p>
+<p id="message">Hudaý bagtymyz aydymyz bolsun jaaaanym ❤️🙏🏻</p>
 
 <script>
-    // Heart Rain
     function createHeart() {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.innerHTML = "❤️";
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
         document.body.appendChild(heart);
 
         setTimeout(() => {
             heart.remove();
         }, 5000);
     }
+
     setInterval(createHeart, 300);
 
-    // Moving "No" button 😂
-    const noBtn = document.getElementById("no");
-    noBtn.addEventListener("mouseenter", () => {
-        noBtn.style.left = Math.random() * 80 + "vw";
-        noBtn.style.top = Math.random() * 80 + "vh";
-    });
-
-    // "Yes" button
-    document.getElementById("yes").onclick = () => {
+    document.getElementById("yes").onclick = function () {
         document.getElementById("message").style.display = "block";
     };
+
+    document.getElementById("no").onclick = function () {
+        let btn = document.getElementById("no");
+        btn.style.left = Math.random() * 70 + "vw";
+        btn.style.top = Math.random() * 70 + "vh";
+        btn.style.position = "absolute";
+    };
 </script>
-  
 
 </body>
 </html>
