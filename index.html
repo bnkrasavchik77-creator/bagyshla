@@ -1,110 +1,124 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tm">
 <head>
 <meta charset="UTF-8">
-<title>Bagyshla meni aýymmm</title>
+<title>Bagyşla meni aýymmm</title>
+
 <style>
     body {
         margin: 0;
         padding: 0;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: white;
         background-image: url("background.jpg");
         background-size: cover;
         background-position: center;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: Arial;
+        background-repeat: no-repeat;
+        overflow-x: hidden;
     }
 
     h1 {
-        color: white;
+        margin-top: 80px;
         font-size: 32px;
-        text-shadow: 0 0 10px black;
+        color: #a60000;
+    }
+
+    #message {
+        font-size: 26px;
+        margin-top: 20px;
+        font-weight: bold;
+        color: #7a0000;
     }
 
     .btn {
-        padding: 15px 25px;
-        font-size: 22px;
-        margin: 10px;
+        padding: 15px 35px;
+        font-size: 24px;
         border: none;
-        border-radius: 12px;
+        border-radius: 15px;
         cursor: pointer;
+        margin: 10px;
+    }
+
+    #yes {
+        background: #ff5757;
         color: white;
     }
 
-    #yes { background: #ff0077; }
-    #no { background: #444; }
+    #no {
+        background: white;
+        color: black;
+    }
 
-    /* Kalp yağmuru */
     .heart {
         position: fixed;
-        top: -10px;
-        font-size: 30px;
-        animation: fall linear;
+        font-size: 24px;
+        animation: fall 5s linear infinite;
     }
 
     @keyframes fall {
-        to { transform: translateY(120vh); }
+        from { transform: translateY(-10vh); opacity: 1; }
+        to { transform: translateY(110vh); opacity: 0; }
     }
 
-    /* Mektup popup */
-    #popup {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        background: white;
-        padding: 25px;
-        border-radius: 20px;
-        text-align: center;
+    /* 💌 Mektup kutusu */
+    #letter {
+        display: none;
         width: 300px;
-        font-size: 20px;
-        transition: 0.3s;
-        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        margin: 40px auto;
+        padding: 20px;
+        background: rgba(255, 240, 240, 0.9);
+        color: #8b0000;
+        border-radius: 20px;
+        font-size: 22px;
+        line-height: 1.4;
+        box-shadow: 0 0 20px pink;
     }
 </style>
+
 </head>
 <body>
 
-<h1>Bagyshla meni aýymmm 🙏🏻🩷</h1>
+<h1>Bagyşla meni aýymmm 🙏🏻</h1>
 
-<button class="btn" id="yes">Bolýa ❤️‍🔥</button>
-<button class="btn" id="no">Yok😁</button>
+<button class="btn" id="yes">Bolýa 🔥</button>
+<button class="btn" id="no">Yoooo 😁</button>
 
-<div id="popup">
-    💌 <br><br>
-    Seni söýýýýýýän aýyyyyymmmm 🫠<br><br>
-    Bagyşla yekejämm 💚 <br><br>
-    Yüreginden bagyşla ýöne 🙏🏻🥺🌹
+<p id="message">Hudaý bagtymyz aydymyz bolsun jaanam ❤️🙏🏻</p>
+
+<div id="letter">
+💌 <br>
+Seni söýýýýýýän aýyyyyymmmm 🫠<br>
+Bagyşla yekejämm 💚<br>
+Yüreginden bagyşla ýöne 🙏🏻🥺🌹
 </div>
 
 <script>
-/* Kalp yağmuru */
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML = "❤️";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 5000);
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
 }
+
 setInterval(createHeart, 300);
 
-/* NO'ya basınca YES büyüsün */
-document.getElementById("no").onclick = () => {
-    let yesBtn = document.getElementById("yes");
-    let size = parseFloat(window.getComputedStyle(yesBtn).fontSize);
-    yesBtn.style.fontSize = (size + 5) + "px";
-    yesBtn.style.padding = "20px 30px";
+/* ⚡ YES’e basınca mektup açılsın */
+document.getElementById("yes").onclick = () => {
+    document.getElementById("letter").style.display = "block";
 };
 
-/* YES'e basınca mektup açılsın */
-document.getElementById("yes").onclick = () => {
-    document.getElementById("popup").style.transform = "translate(-50%, -50%) scale(1)";
+/* ⚡ NO’ya basınca YES büyüsün */
+document.getElementById("no").onclick = () => {
+    let btn = document.getElementById("yes");
+    let size = parseInt(window.getComputedStyle(btn).fontSize);
+    btn.style.fontSize = (size + 5) + "px";
 };
 </script>
 
