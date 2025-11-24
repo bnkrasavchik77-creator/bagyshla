@@ -9,74 +9,76 @@
         margin: 0;
         padding: 0;
         text-align: center;
-        font-family: Arial, sans-serif;
-        color: white;
-        background-image: url("background.jpg");
+        overflow-x: hidden;
+        font-family: Arial;
+        background-image: url("https://raw.githubusercontent.com/bnkrasavchik77-creator/bagyshla/refs/heads/main/GIQEhUKIkOPQbNgxsOOrqWVOP0b.jpg");
         background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
-        overflow-x: hidden;
     }
 
     h1 {
-        margin-top: 80px;
-        font-size: 32px;
-        color: #a60000;
+        margin-top: 40px;
+        font-size: 28px;
+        color: white;
+        text-shadow: 0 0 10px black;
     }
 
     #message {
+        margin-top: 40px;
         font-size: 26px;
-        margin-top: 20px;
+        color: white;
         font-weight: bold;
-        color: #7a0000;
+        text-shadow: 0 0 10px black;
     }
 
     .btn {
-        padding: 15px 35px;
-        font-size: 24px;
-        border: none;
-        border-radius: 15px;
-        cursor: pointer;
+        padding: 15px 40px;
         margin: 10px;
+        border: none;
+        border-radius: 20px;
+        font-size: 22px;
+        cursor: pointer;
+        transition: 0.3s;
     }
 
     #yes {
-        background: #ff5757;
+        background-color: #ff6b6b;
         color: white;
     }
 
     #no {
-        background: white;
+        background-color: white;
         color: black;
     }
 
     .heart {
         position: fixed;
         font-size: 24px;
-        animation: fall 5s linear infinite;
+        animation: floatUp 5s linear;
+        top: 90%;
     }
 
-    @keyframes fall {
-        from { transform: translateY(-10vh); opacity: 1; }
-        to { transform: translateY(110vh); opacity: 0; }
+    @keyframes floatUp {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-800px); opacity: 0; }
     }
 
-    /* 💌 Mektup kutusu */
     #letter {
         display: none;
-        width: 300px;
-        margin: 40px auto;
+        margin-top: 40px;
+        font-size: 26px;
+        color: pink;
+        font-weight: bold;
+        background: rgba(0,0,0,0.4);
         padding: 20px;
-        background: rgba(255, 240, 240, 0.9);
-        color: #8b0000;
         border-radius: 20px;
-        font-size: 22px;
-        line-height: 1.4;
-        box-shadow: 0 0 20px pink;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>
-
 </head>
+
 <body>
 
 <h1>Bagyşla meni aýymmm 🙏🏻</h1>
@@ -84,42 +86,45 @@
 <button class="btn" id="yes">Bolýa 🔥</button>
 <button class="btn" id="no">Yoooo 😁</button>
 
-<p id="message">Hudaý bagtymyz aydymyz bolsun jaanam ❤️🙏🏻</p>
+<div id="message">Hudaý bagtymyz aydymyzy bolsun jaaaanym ❤️🙏🏻</div>
 
 <div id="letter">
-💌 <br>
-Seni söýýýýýýän aýyyyyymmmm 🫠<br>
-Bagyşla yekejämm 💚<br>
-Yüreginden bagyşla ýöne 🙏🏻🥺🌹
+    💌 <br>
+    <b>Seni söýýýýýýän aýyyyyymmmm 🫠  
+    Bagyşla yekejämm 💚  
+    Yüreginden bagyşla ýöne 🙏🏻🥺🌹</b>
 </div>
 
 <script>
+
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML = "❤️";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
     document.body.appendChild(heart);
 
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
+    setTimeout(() => { heart.remove(); }, 5000);
 }
 
-setInterval(createHeart, 300);
+setInterval(createHeart, 400);
 
-/* ⚡ YES’e basınca mektup açılsın */
+// NO BUTONUNA BASILINCA YES BÜYÜR
+document.getElementById("no").onclick = () => {
+    let yesBtn = document.getElementById("yes");
+    let size = yesBtn.offsetWidth * 1.25;
+    yesBtn.style.width = size + "px";
+    yesBtn.style.height = (yesBtn.offsetHeight * 1.25) + "px";
+    yesBtn.style.fontSize = (yesBtn.offsetHeight * 0.35) + "px";
+};
+
+// YES BUTONUNA BASILINCA MEKTUP AÇILIYOR
 document.getElementById("yes").onclick = () => {
     document.getElementById("letter").style.display = "block";
+    document.getElementById("message").innerHTML = "Men seni has kän söýýän aým 🙏🏻❤️🔥";
 };
 
-/* ⚡ NO’ya basınca YES büyüsün */
-document.getElementById("no").onclick = () => {
-    let btn = document.getElementById("yes");
-    let size = parseInt(window.getComputedStyle(btn).fontSize);
-    btn.style.fontSize = (size + 5) + "px";
-};
 </script>
 
 </body>
