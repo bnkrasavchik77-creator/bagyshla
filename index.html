@@ -1,131 +1,65 @@
 <!DOCTYPE html>
-<html lang="tm">
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
 <title>Bagyşla meni aýymmm</title>
-
 <style>
     body {
         margin: 0;
         padding: 0;
         text-align: center;
+        font-family: Arial, sans-serif;
         overflow-x: hidden;
-        font-family: Arial;
-        background-image: url("https://raw.githubusercontent.com/bnkrasavchik77-creator/bagyshla/refs/heads/main/GIQEhUKIkOPQbNgxsOOrqWVOP0b.jpg");
+        background: url("https://raw.githubusercontent.com/bnkrasavchik77-creator/bagyshla/refs/heads/main/GIQEhUKIkOPQbNgxsOOrqWVOP0b.jpg");
         background-size: cover;
         background-position: center;
     }
 
     h1 {
-        margin-top: 40px;
+        margin-top: 30px;
         font-size: 28px;
         color: white;
         text-shadow: 0 0 10px black;
     }
 
-    #message {
-        margin-top: 40px;
-        font-size: 26px;
+    .btn {
+        padding: 15px 35px;
+        font-size: 22px;
+        border-radius: 15px;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
         color: white;
         font-weight: bold;
-        text-shadow: 0 0 10px black;
-    }
-
-    .btn {
-        padding: 15px 40px;
-        margin: 10px;
-        border: none;
-        border-radius: 20px;
-        font-size: 22px;
-        cursor: pointer;
-        transition: 0.3s;
     }
 
     #yes {
-        background-color: #ff6b6b;
-        color: white;
+        background: #ff4f4f;
     }
 
     #no {
-        background-color: white;
+        background: white;
         color: black;
     }
 
     .heart {
         position: fixed;
         font-size: 24px;
-        animation: floatUp 5s linear;
-        top: 90%;
+        animation: float 4s linear infinite;
     }
 
-    @keyframes floatUp {
-        0% { transform: translateY(0); opacity: 1; }
-        100% { transform: translateY(-800px); opacity: 0; }
+    @keyframes float {
+        0%   { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-150px); opacity: 0; }
     }
 
+    /* Mektup */
     #letter {
         display: none;
-        margin-top: 40px;
-        font-size: 26px;
-        color: pink;
-        font-weight: bold;
-        background: rgba(0,0,0,0.4);
-        padding: 20px;
-        border-radius: 20px;
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
-</head>
-
-<body>
-
-<h1>Bagyşla meni aýymmm 🙏🏻</h1>
-
-<button class="btn" id="yes">Bolýa 🔥</button>
-<button class="btn" id="no">Yoooo 😁</button>
-
-<div id="message">Hudaý bagtymyz aydymyzy bolsun jaaaanym ❤️🙏🏻</div>
-
-<div id="letter">
-    💌 <br>
-    <b>Seni söýýýýýýän aýyyyyymmmm 🫠  
-    Bagyşla yekejämm 💚  
-    Yüreginden bagyşla ýöne 🙏🏻🥺🌹</b>
-</div>
-
-<script>
-
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => { heart.remove(); }, 5000);
-}
-
-setInterval(createHeart, 400);
-
-// NO BUTONUNA BASILINCA YES BÜYÜR
-document.getElementById("no").onclick = () => {
-    let yesBtn = document.getElementById("yes");
-    let size = yesBtn.offsetWidth * 1.25;
-    yesBtn.style.width = size + "px";
-    yesBtn.style.height = (yesBtn.offsetHeight * 1.25) + "px";
-    yesBtn.style.fontSize = (yesBtn.offsetHeight * 0.35) + "px";
-};
-
-// YES BUTONUNA BASILINCA MEKTUP AÇILIYOR
-document.getElementById("yes").onclick = () => {
-    document.getElementById("letter").style.display = "block";
-    document.getElementById("message").innerHTML = "Men seni has kän söýýän aým 🙏🏻❤️🔥";
-};
-
-</script>
-
-</body>
-</html>
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 25px;
+        background: white;
+        border-radius
