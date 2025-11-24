@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tm">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bagyshla meni aýymmm 🙏🏻</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: #ffd6d6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        position: relative;
+    }
+    h1 {
+        color: #5a0000;
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .btn {
+        padding: 12px 28px;
+        border-radius: 12px;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+    }
+    #yes {
+        background: #ff4b4b;
+        color: white;
+    }
+    #no {
+        background: white;
+        color: #333;
+        position: absolute;
+    }
+    #message {
+        display: none;
+        font-size: 22px;
+        color: #6d0000;
+        text-align: center;
+        width: 80%;
+    }
+
+    /* Falling hearts */
+    .heart {
+        position: absolute;
+        color: #ff4b4b;
+        font-size: 20px;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Bagyshla meni aýymmm 🙏🏻🥺❤️</h1>
+
+<div>
+    <button id="yes" class="btn">Bolya ❤️‍🔥</button>
+    <button id="no" class="btn">Yok 😁</button>
+</div>
+
+<p id="message">Aýym, seni çooook söýýän 🥺❤️‍🔥 Şuw wagt bagyşladygyň üçin minnetdar! 🫂</p>
+
+<script>
+    // Heart Rain
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+    setInterval(createHeart, 300);
+
+    // Moving "No" button 😂
+    const noBtn = document.getElementById("no");
+    noBtn.addEventListener("mouseenter", () => {
+        noBtn.style.left = Math.random() * 80 + "vw";
+        noBtn.style.top = Math.random() * 80 + "vh";
+    });
+
+    // "Yes" button
+    document.getElementById("yes").onclick = () => {
+        document.getElementById("message").style.display = "block";
+    };
+</script>
+  
+
+</body>
+</html>
