@@ -1,111 +1,111 @@
 <!DOCTYPE html>
-<html lang="tm">
+<html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bagyshla meni aýymmm 🙏🏻</title>
+<meta charset="UTF-8">
+<title>Bagyshla meni aýymmm</title>
 <style>
     body {
         margin: 0;
+        padding: 0;
+        background-image: url("background.jpg");
+        background-size: cover;
+        background-position: center;
         height: 100vh;
-        background-image: url('https://raw.githubusercontent.com/bnkrasavchik77-creator/bagyshla/refs/heads/main/background.jpg');
-background-size: cover;
-background-position: center;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        font-family: Arial, sans-serif;
-        overflow: hidden;
-        position: relative;
+        font-family: Arial;
     }
-    
+
     h1 {
-        color: #5a0000;
-        font-size: 28px;
-        text-align: center;
-        margin-bottom: 40px;
+        color: white;
+        font-size: 32px;
+        text-shadow: 0 0 10px black;
     }
 
     .btn {
-        padding: 12px 28px;
-        border-radius: 12px;
-        font-size: 20px;
-        border: none;
-        cursor: pointer;
+        padding: 15px 25px;
+        font-size: 22px;
         margin: 10px;
-    }
-
-    #yes {
-        background: #ff4b4b;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
         color: white;
     }
 
-    #no {
-        background: white;
-        color: #333;
-        position: relative;
-    }
+    #yes { background: #ff0077; }
+    #no { background: #444; }
 
-    #message {
-        display: none;
-        font-size: 22px;
-        color: #6d0000;
-        text-align: center;
-        width: 80%;
-    }
-
+    /* Kalp yağmuru */
     .heart {
-        position: absolute;
-        color: #ff4b4b;
-        font-size: 20px;
-        animation: fall linear infinite;
+        position: fixed;
+        top: -10px;
+        font-size: 30px;
+        animation: fall linear;
     }
 
     @keyframes fall {
-        to {
-            transform: translateY(110vh);
-            opacity: 0;
-        }
+        to { transform: translateY(120vh); }
+    }
+
+    /* Mektup popup */
+    #popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        text-align: center;
+        width: 300px;
+        font-size: 20px;
+        transition: 0.3s;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
     }
 </style>
 </head>
-
 <body>
 
-<h1>Bagyshla meni aýymmm 🙏🏻</h1>
+<h1>Bagyshla meni aýymmm 🙏🏻🩷</h1>
 
 <button class="btn" id="yes">Bolýa ❤️‍🔥</button>
 <button class="btn" id="no">Yoooo 😁</button>
 
-<p id="message">Hudaý bagtymyz aydymyz bolsun jaaaanym ❤️🙏🏻</p>
+<div id="popup">
+    💌 <br><br>
+    Seni söýýýýýýän aýyyyyymmmm 🫠<br><br>
+    Bagyşla yekejämm 💚 <br><br>
+    Yüreginden bagyşla ýöne 🙏🏻🥺🌹
+</div>
 
 <script>
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-        document.body.appendChild(heart);
+/* Kalp yağmuru */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+    document.body.appendChild(heart);
 
-        setTimeout(() => {
-            heart.remove();
-        }, 5000);
-    }
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
 
-    setInterval(createHeart, 300);
+/* NO'ya basınca YES büyüsün */
+document.getElementById("no").onclick = () => {
+    let yesBtn = document.getElementById("yes");
+    let size = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+    yesBtn.style.fontSize = (size + 5) + "px";
+    yesBtn.style.padding = "20px 30px";
+};
 
-    document.getElementById("yes").onclick = function () {
-        document.getElementById("message").style.display = "block";
-    };
-
-    document.getElementById("no").onclick = function () {
-        let btn = document.getElementById("no");
-        btn.style.left = Math.random() * 70 + "vw";
-        btn.style.top = Math.random() * 70 + "vh";
-        btn.style.position = "absolute";
-    };
+/* YES'e basınca mektup açılsın */
+document.getElementById("yes").onclick = () => {
+    document.getElementById("popup").style.transform = "translate(-50%, -50%) scale(1)";
+};
 </script>
 
 </body>
